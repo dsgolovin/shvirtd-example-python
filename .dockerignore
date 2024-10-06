@@ -1,0 +1,8 @@
+haproxy/
+nginx/
+LICENSE
+not_*.py
+*.yaml
+*md
+*.pdf
+*.yml

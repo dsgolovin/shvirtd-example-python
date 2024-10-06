@@ -1,0 +1,28 @@
+version: '3.8'
+
+include:
+  - proxy.yaml
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.python 
+    restart: always
+    networks:
+      backend:
+        ipv4_address: 172.20.0.5 
+
+  mysql:
+    image: mariadb:10.6.4-focal
+    command: "--default-authentication-plugin=mysql_native_password" 
+    networks:
+      backend:
+        ipv4_address: 172.20.0.10
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_TABLE=${MYSQL_TABLE}
+      - MYSQL_ROOT_HOST="%" # it's very important!!!
