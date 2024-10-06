@@ -4,12 +4,6 @@ WORKDIR /app
 
 COPY . .
 
-ENV DB_HOST=${MYSQL_HOST}
-ENV DB_TABLE=${MYSQL_TABLE}
-ENV DB_USER=${MYSQL_USER}
-ENV DB_NAME=${MYSQL_DATABASE}
-ENV DB_PASSWORD=${MYSQL_PASSWORD}
-
 RUN pip install --upgrade pip
 
 RUN pip install --no-cache-dir -r requirements.txt

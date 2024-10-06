@@ -8,6 +8,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.python 
+    env_file: 
+      - .env
     restart: always
     networks:
       backend:
